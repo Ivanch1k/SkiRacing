@@ -3,36 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table {
+             border-collapse: collapse;
+             width: 60%;
+             font-family: cursive;
+          }
+          td,
+          th {
+            padding: 10px;
+            border-bottom: 2px solid grey;
+          }
+        .nav{
+             display: grid;
+             grid-template-columns: 9% 9%;
+         }
+         button{
+             width:100px
+         }
+         .table_title{
+             font-size: 20px;
+         }
+    </style>
 </head>
 <body>
 <header>
-    <span>
-        <form>
-            <input type="button" value="Все сореви" onClick='location.href="http://127.0.0.1:8000/competitions"'>
-        </form>
-        <form>
-            <input type="button" value="Все гонщики" onClick='location.href="http://127.0.0.1:8000/racers"'>
-        </form>
-    </span>
+    <div class="nav">
+        <div>
+            <form>
+                <input type="button" value="Все соревнования" onClick='location.href="http://127.0.0.1:8000/competitions"'>
+            </form>
+        </div>
+        <div>
+            <form>
+                <input type="button" value="Все гонщики" onClick='location.href="http://127.0.0.1:8000/racers"'>
+            </form>
+        </div>
+    </div>
 </header>
 {% if racer %}
+    <h2>Спортсмен</h2>
     <table>
         <tr>
-        <td>name {{ racer.name }}</td>
-        <td>surname {{ racer.surname }}</td>
-        <td>gender {{ racer.gender }}</td>
-        <td>country {{ racer.country }}</td>
-        <td>age {{ racer.age }}</td>
+            <td class="table_title">Имя</td>
+            <td class="table_title">Фамилия</td>
+            <td class="table_title">Пол</td>
+            <td class="table_title">Страна</td>
+            <td class="table_title">Возраст</td>
+        </tr>
+        <tr>
+            <td>{{ racer.name }}</td>
+            <td>{{ racer.surname }}</td>
+            <td>{{ racer.gender }}</td>
+            <td>{{ racer.country }}</td>
+            <td>{{ racer.age }}</td>
         </tr>
     </table>
+    <br/>
+    <h2>Посещенные соревнования</h2>
+
     <table>
+    <tr>
+            <td class="table_title">Название соревнования</td>
+            <td class="table_title">Дата проведения</td>
+            <td class="table_title">Страна</td>
+            <td class="table_title">Дистанция</td>
+            <td class="table_title">Тип соревнования</td>
+            <td class="table_title"></td>
+        </tr>
+
     {% for competition in competitions %}
         <tr>
-        <td>    name {{ competition.name }}     </td>
-        <td>   date {{ competition.date }}   </td>
-        <td>   country {{ competition.country }}    </td>
-        <td>   distance {{ competition.distance }}   </td>
-        <td>   type {{ competition.type }}    </td>
+        <td>{{ competition.name }}     </td>
+        <td>{{ competition.date }}   </td>
+        <td>{{ competition.country }}    </td>
+        <td>{{ competition.distance }}   </td>
+        <td>{{ competition.type }}    </td>
          <td>
             <form>
                 <input type="button" value="Результат" onClick='location.href="http://127.0.0.1:8000/racer_in_competition?racer_id={{racer.id}};competition_id={{competition.id}}"'>

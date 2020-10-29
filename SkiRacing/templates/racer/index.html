@@ -2,31 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Спортсмены</title>
+    <style>
+        table {
+             border-collapse: collapse;
+             width: 60%;
+             font-family: cursive;
+          }
+          td,
+          th {
+            padding: 10px;
+            border-bottom: 2px solid grey;
+          }
+        .nav{
+             display: grid;
+             grid-template-columns: 9% 9%;
+         }
+         button{
+             width:100px
+         }
+         .table_title{
+             font-size: 20px;
+         }
+    </style>
 </head>
 <body>
 <header>
-    <span>
-        <form>
-            <input type="button" value="Все сореви" onClick='location.href="http://127.0.0.1:8000/competitions"'>
-        </form>
-        <form>
-            <input type="button" value="Все гонщики" onClick='location.href="http://127.0.0.1:8000/racers"'>
-        </form>
-    </span>
+    <h1>
+        Список спортсменов
+    </h1>
+    <div class="nav">
+        <div>
+            <form>
+                <input type="button" value="Все соревнования" onClick='location.href="http://127.0.0.1:8000/competitions"'>
+            </form>
+        </div>
+        <div>
+            <form>
+                <input type="button" value="Все гонщики" onClick='location.href="http://127.0.0.1:8000/racers"'>
+            </form>
+        </div>
+    </div>
 </header>
 {% if racers %}
     <table>
+    <tr>
+        <td class="table_title">Имя</td>
+        <td class="table_title">Фамилия</td>
+        <td class="table_title">Пол</td>
+        <td class="table_title">Страна</td>
+        <td class="table_title">Возраст</td>
+        <td></td>
+    </tr>
     {% for racer in racers %}
         <tr>
-        <td>name {{ racer.name }}</td>
-        <td>surname {{ racer.surname }}</td>
-        <td>gender {{ racer.gender }}</td>
-        <td>country {{ racer.country }}</td>
-        <td>age {{ racer.age }}</td>
+        <td>{{ racer.name }}</td>
+        <td>{{ racer.surname }}</td>
+        <td>{{ racer.gender }}</td>
+        <td>{{ racer.country }}</td>
+        <td>{{ racer.age }}</td>
         <td>
             <form>
-                <input type="button" value="Кнопка" onClick='location.href="http://127.0.0.1:8000/racer?id={{racer.id}}"'>
+                <input type="button" value="Детальнее" onClick='location.href="http://127.0.0.1:8000/racer?id={{racer.id}}"'>
             </form>
         </td>
         </tr>

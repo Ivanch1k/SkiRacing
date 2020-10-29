@@ -3,45 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table {
+             border-collapse: collapse;
+             width: 60%;
+             font-family: cursive;
+          }
+          td,
+          th {
+            padding: 10px;
+            border-bottom: 2px solid grey;
+          }
+        .nav{
+             display: grid;
+             grid-template-columns: 9% 9%;
+         }
+         button{
+             width:100px
+         }
+         .table_title{
+             font-size: 20px;
+         }
+    </style>
 </head>
 <body>
 <header>
-    <span>
-        <form>
-            <input type="button" value="Все сореви" onClick='location.href="http://127.0.0.1:8000/competitions"'>
-        </form>
-        <form>
-            <input type="button" value="Все гонщики" onClick='location.href="http://127.0.0.1:8000/racers"'>
-        </form>
-    </span>
+    <div class="nav">
+        <div>
+            <form>
+                <input type="button" value="Все сореви" onClick='location.href="http://127.0.0.1:8000/competitions"'>
+            </form>
+        </div>
+        <div>
+            <form>
+                <input type="button" value="Все гонщики" onClick='location.href="http://127.0.0.1:8000/racers"'>
+            </form>
+        </div>
+    </div>
 </header>
-<h2>Competition</h2>
+<h2>Соревнование</h2>
 <table>
+    <tr>
+        <td class="table_title">Название соревнования</td>
+        <td class="table_title">Дата проведения</td>
+        <td class="table_title">Страна</td>
+        <td class="table_title">Дистанция</td>
+        <td class="table_title">Тип</td>
+    </tr>
         <tr>
-        <td>    name {{ competition.name }}     </td>
-        <td>   date {{ competition.date }}   </td>
-        <td>   country {{ competition.country }}    </td>
-        <td>   distance {{ competition.distance }}   </td>
-        <td>   type {{ competition.type }}    </td>
+        <td>{{ competition.name }}</td>
+        <td>{{ competition.date }}</td>
+        <td>{{ competition.country }}</td>
+        <td>{{ competition.distance }}</td>
+        <td>{{ competition.type }}</td>
         </tr>
     </table>
-<h2>Racer</h2>
+<br>
+<h2>Участник</h2>
     <table>
         <tr>
-        <td>name {{ racer.name }}</td>
-        <td>surname {{ racer.surname }}</td>
-        <td>gender {{ racer.gender }}</td>
-        <td>country {{ racer.country }}</td>
-        <td>age {{ racer.age }}</td>
+            <td class="table_title">Имя</td>
+            <td class="table_title">Фамилия</td>
+            <td class="table_title">Пол</td>
+            <td class="table_title">Страна</td>
+            <td class="table_title">Возраст</td>
+        </tr>
+        <tr>
+            <td>{{ racer.name }}</td>
+            <td>{{ racer.surname }}</td>
+            <td>{{ racer.gender }}</td>
+            <td>{{ racer.country }}</td>
+            <td>{{ racer.age }}</td>
         </tr>
     </table>
-<h2>Race</h2>
+<br>
+<h2>Детально</h2>
     <table>
         <tr>
-        <td>points {{ race.points }}</td>
-        <td>total_time {{ race.total_time }}</td>
-        <td>start_time {{ race.start_time }}</td>
+            <td class="table_title">Очки</td>
+            <td class="table_title">Время окончания</td>
+            <td class="table_title">Время начала</td>
+        </tr>
+        <tr>
+            <td>{{ race.points }}</td>
+            <td>{{ race.total_time }}</td>
+            <td>{{ race.start_time }}</td>
         </tr>
     </table>
+<br>
+<h2>Контрольные точки</h2>
+{% for checkp in checkpoints %}
+    <table>
+    <tr>
+        <td class="table_title">Номер</td>
+        <td class="table_title">Дистанция(м)</td>
+        <td class="table_title">Время</td>
+        <td class="table_title">Скорость(м/с)</td>
+    </tr>
+    <tr>
+        <td>{{ checkp.number }} </td>
+        <td>{{checkp.distance}} </td>
+        <td>{{ checkp.time }} </td>
+        <td>{{ checkp.speed }} </td>
+    </tr>
+    </table>
+{% endfor %}
 </body>
 </html>
