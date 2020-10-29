@@ -50,8 +50,7 @@ def competition(request):
 
 
 def racer_in_competition(request):
-    race = Race.objects.filter(racer_id_id = request.GET['racer_id']).filter(competition_id_id = request.GET['competition_id'])
-    print()
+    race = Race.objects.get(racer_id_id = request.GET['racer_id'], competition_id_id = request.GET['competition_id'])
     racer_temp = Racer.objects.get(id = request.GET['racer_id'])
     competition_temp = Competition.objects.get(id = request.GET['competition_id'])
     template = loader.get_template('racer_in_competition/index.html')
