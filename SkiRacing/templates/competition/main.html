@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <span>
+        <form>
+            <input type="button" value="Все сореви" onClick='location.href="http://127.0.0.1:8000/competitions"'>
+        </form>
+        <form>
+            <input type="button" value="Все гонщики" onClick='location.href="http://127.0.0.1:8000/racers"'>
+        </form>
+    </span>
+</header>
+{% if competition %}
+    <table>
+        <tr>
+        <td>    name {{ competition.name }}     </td>
+        <td>   date {{ competition.date }}   </td>
+        <td>   country {{ competition.country }}    </td>
+        <td>   distance {{ competition.distance }}   </td>
+        <td>   type {{ competition.type }}    </td>
+        </tr>
+    </table>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</body>
+</html>
