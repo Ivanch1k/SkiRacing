@@ -25,6 +25,22 @@
         <td>age {{ racer.age }}</td>
         </tr>
     </table>
+    <table>
+    {% for competition in competitions %}
+        <tr>
+        <td>    name {{ competition.name }}     </td>
+        <td>   date {{ competition.date }}   </td>
+        <td>   country {{ competition.country }}    </td>
+        <td>   distance {{ competition.distance }}   </td>
+        <td>   type {{ competition.type }}    </td>
+         <td>
+            <form>
+                <input type="button" value="Результат" onClick='location.href="http://127.0.0.1:8000/racer_in_competition?racer_id={{racer.id}};competition_id={{competition.id}}"'>
+            </form>
+        </td>
+        </tr>
+    {% endfor %}
+    </table>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}

@@ -24,4 +24,5 @@ urlpatterns = [
     path('competitions', views.competitions),
     path('racer', views.racer),
     path('competition', views.competition),
+    path('racer_in_competition', views.racer_in_competition),
 ]

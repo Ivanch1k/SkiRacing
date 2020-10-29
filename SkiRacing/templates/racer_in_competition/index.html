@@ -15,8 +15,8 @@
         </form>
     </span>
 </header>
-{% if competition %}
-    <table>
+<h2>Competition</h2>
+<table>
         <tr>
         <td>    name {{ competition.name }}     </td>
         <td>   date {{ competition.date }}   </td>
@@ -25,24 +25,23 @@
         <td>   type {{ competition.type }}    </td>
         </tr>
     </table>
+<h2>Racer</h2>
     <table>
-    {% for racer in racers %}
         <tr>
         <td>name {{ racer.name }}</td>
         <td>surname {{ racer.surname }}</td>
         <td>gender {{ racer.gender }}</td>
         <td>country {{ racer.country }}</td>
         <td>age {{ racer.age }}</td>
-        <td>
-            <form>
-                <input type="button" value="Результат" onClick='location.href="http://127.0.0.1:8000/racer_in_competition?racer_id={{racer.id}};competition_id={{competition.id}}"'>
-            </form>
-        </td>
         </tr>
-    {% endfor %}
     </table>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<h2>Race</h2>
+    <table>
+        <tr>
+        <td>points {{ race.points }}</td>
+        <td>total_time {{ race.total_time }}</td>
+        <td>start_time {{ race.start_time }}</td>
+        </tr>
+    </table>
 </body>
 </html>
