@@ -43,5 +43,16 @@
         <td>start_time {{ race.start_time }}</td>
         </tr>
     </table>
+<h2>Checkpoints</h2>
+{% for checkp in checkpoints %}
+    <table>
+    <tr>
+        <td>  number  {{ checkp.number }} </td>
+        <td>  distance  {{checkp.distance}} </td>
+        <td>  time  {{ checkp.time }} </td>
+        <td>  speed  {{ checkp.speed }} </td>
+    </tr>
+    </table>
+{% endfor %}
 </body>
 </html>
