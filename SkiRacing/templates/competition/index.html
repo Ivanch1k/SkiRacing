@@ -2,31 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Competitions</title>
+    <style>
+         table {
+             border-collapse: collapse;
+             width: 100%;
+             font-family: cursive;
+          }
+          td,
+          th {
+            padding: 10px;
+            border-bottom: 2px solid grey;
+          }
+         .nav{
+             display: grid;
+             grid-template-columns: 9% 9%;
+         }
+         button{
+             width:70px
+         }
+         .table_title{
+             font-size: 20px;
+         }
+    </style>
 </head>
 <body>
 <header>
-    <span>
-        <form>
-            <input type="button" value="Все сореви" onClick='location.href="http://127.0.0.1:8000/competitions"'>
-        </form>
-        <form>
-            <input type="button" value="Все гонщики" onClick='location.href="http://127.0.0.1:8000/racers"'>
-        </form>
-    </span>
+    <h1>Список соревнований</h1>
+    <div class="nav">
+        <div style="margin-left: 0px">
+            <form>
+                <input type="button" value="Все соревнования" onClick='location.href="http://127.0.0.1:8000/competitions"'>
+            </form>
+        </div>
+        <div>
+            <form>
+                <input type="button" value="Все гонщики" onClick='location.href="http://127.0.0.1:8000/racers"'>
+            </form>
+        </div>
+    </div>
 </header>
 {% if competitions %}
     <table>
+    <tr>
+        <td class="table_title">Название</td>
+        <td class="table_title">Дата</td>
+        <td class="table_title">Страна</td>
+        <td class="table_title">Дистанция(м)</td>
+        <td class="table_title">Тип соревнования</td>
+        <td></td>
+    </tr>
     {% for competition in competitions %}
         <tr>
-        <td>    name {{ competition.name }}     </td>
-        <td>   date {{ competition.date }}   </td>
-        <td>   country {{ competition.country }}    </td>
-        <td>   distance {{ competition.distance }}   </td>
-        <td>   type {{ competition.type }}    </td>
+        <td>{{ competition.name }}</td>
+        <td>{{ competition.date }}</td>
+        <td>{{ competition.country }}</td>
+        <td>{{ competition.distance }}</td>
+        <td>{{ competition.type }}</td>
          <td>
             <form>
-                <input type="button" value="Кнопка" onClick='location.href="http://127.0.0.1:8000/competition?id={{competition.id}}"'>
+                <input type="button" value="Детальнее" onClick='location.href="http://127.0.0.1:8000/competition?id={{competition.id}}"'>
             </form>
         </td>
         </tr>
